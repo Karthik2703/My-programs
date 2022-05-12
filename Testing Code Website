@@ -1,0 +1,134 @@
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+
+public class AutomaticTestingWeb {
+	
+	public static void main(String [] args) throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver = new ChromeDriver();
+		
+		driver.get("https://adactinhotelapp.com/");
+		
+		driver.manage().window().maximize();
+		
+
+		WebElement btn0 = driver.findElement(By.xpath("//input[@class='login_input']"));
+		btn0.sendKeys("Roukcenzo07");
+		
+		WebElement btn1 = driver.findElement(By.xpath("//input[@id='password']"));
+		btn1.sendKeys("12345678");
+		Thread.sleep(200);
+		
+		WebElement btn2 = driver.findElement(By.xpath("//input[@class='login_button']"));
+		btn2.click();
+		Thread.sleep(300);
+		
+		Select country = new Select (driver.findElement(By.xpath("//select[@id='location']")));
+		country.selectByIndex(6);
+		Thread.sleep(200);
+		
+		Select hotel = new Select (driver.findElement(By.xpath("//select[@id='hotels']")));
+		hotel.selectByIndex(2);
+		Thread.sleep(200);
+		
+		Select roomtype = new Select (driver.findElement(By.xpath("//select[@name='room_type']")));
+		roomtype.selectByIndex(4);
+		Thread.sleep(200);
+		
+		Select roomNum= new Select (driver.findElement(By.xpath("//select[@id='room_nos']")));
+		roomNum.selectByIndex(1);
+		Thread.sleep(200);
+		
+		WebElement btn3 = driver.findElement(By.xpath("//input[@name='datepick_in']"));
+		btn3.sendKeys("23.05.2022");
+		Thread.sleep(200);
+		
+		WebElement btn4 = driver.findElement(By.xpath("//input[@name='datepick_out']"));
+		btn4.sendKeys("25.05.2022");
+		Thread.sleep(200);
+		
+		Select adultPerRoom= new Select (driver.findElement(By.xpath("//select[@id='adult_room']")));
+		adultPerRoom.selectByIndex(2);
+		Thread.sleep(200);
+		
+		Select childPerRoom= new Select (driver.findElement(By.xpath("//select[@id='child_room']")));
+		childPerRoom.selectByIndex(2);
+		Thread.sleep(200);
+		
+		WebElement btn5 = driver.findElement(By.xpath("//input[@id='Submit']"));
+		btn5.click();
+		Thread.sleep(200);
+		
+		WebElement btn6 = driver.findElement(By.xpath("//input[@id='radiobutton_0']"));
+		btn6.click();
+		Thread.sleep(200);
+		
+		WebElement btn7 = driver.findElement(By.xpath("//input[@id='continue']"));
+		btn7.click();
+		Thread.sleep(200);
+		
+		WebElement btn8 = driver.findElement(By.xpath("//input[@name='first_name']"));
+		btn8.sendKeys("Anonymous");
+		Thread.sleep(200);
+		
+		WebElement btn9 = driver.findElement(By.xpath("//input[@name='last_name']"));
+		btn9.sendKeys("Person");
+		Thread.sleep(200);
+		
+		WebElement btn10 = driver.findElement(By.xpath("//textarea[@name='address']"));
+		btn10.sendKeys("Hotel SunShine");
+		Thread.sleep(200);
+		
+		WebElement btn11 = driver.findElement(By.xpath("//input[@id='cc_num']"));
+		btn11.sendKeys("1234567890123456");
+		Thread.sleep(200);
+
+		Select cardType= new Select (driver.findElement(By.xpath("//select[@name='cc_type']")));
+		cardType.selectByIndex(3);
+		Thread.sleep(200);
+		
+		Select cardExpMonth= new Select (driver.findElement(By.xpath("//select[@id='cc_exp_month']")));
+		cardExpMonth.selectByIndex(5);
+		Thread.sleep(200);
+		
+		Select cardExpYear= new Select (driver.findElement(By.xpath("//select[@id='cc_exp_year']")));
+		cardExpYear.selectByIndex(12);
+		Thread.sleep(200);
+		
+		WebElement btn12 = driver.findElement(By.xpath("//input[@name='cc_cvv']"));
+		btn12.sendKeys("4848");
+		Thread.sleep(200);
+
+		WebElement btn13 = driver.findElement(By.xpath("//input[@id='book_now']"));
+		btn13.click();
+		Thread.sleep(700);
+		
+		WebElement btn14 = driver.findElement(By.xpath("/html/body/table[2]/tbody/tr[1]/td[2]/a[2]"));
+		btn14.click();
+		Thread.sleep(500);
+
+		WebElement btn15 = driver.findElement(By.xpath("//input[@name='check_all']"));
+		btn15.click();
+		Thread.sleep(200);
+		
+		WebElement btn16 = driver.findElement(By.xpath("//input[@value='Cancel Selected']"));
+		btn16.click();
+		Thread.sleep(1000);
+		
+		Alert alert = driver.switchTo().alert();
+		alert.accept();
+		
+		WebElement btn17 = driver.findElement(By.xpath("//input[@id='logout']"));
+		btn17.click();
+	}
+}
