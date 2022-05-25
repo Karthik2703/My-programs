@@ -1,0 +1,68 @@
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class FlipKartDemo {
+	public static void main(String[] args) throws InterruptedException, AWTException, IOException {
+
+		WebDriverManager.chromedriver().setup();
+
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+
+		WebElement txtUserName = driver.findElement(By.xpath("//input[@class='_2IX_2- VJZDxU']"));
+		txtUserName.sendKeys("6382902348"); 
+		
+		WebElement txtPassword = driver.findElement(By.xpath("//input[@class='_2IX_2- _3mctLh VJZDxU']"));
+		txtPassword.sendKeys("Nirm@l@1807");
+		
+		WebElement btnLogin = driver.findElement(By.xpath("//button[@class='_2KpZ6l _2HKlqd _3AWRsL']"));
+		btnLogin.click();
+		Thread.sleep(2000);
+
+		WebElement notify = driver.findElement(By.xpath("//*[@id=\"container\"]/div/div[2]/div/div/div[1]/a/div[1]/div/img")); 
+		notify.click();
+		Thread.sleep(1000);
+		
+		WebElement elec = driver.findElement(By.xpath("//span[text()='Electronics']"));
+		Actions actions = new Actions(driver);
+		actions.moveToElement(elec).perform();
+		Thread.sleep(1000);
+		
+		WebElement mi = driver.findElement(By.xpath("//a[text()='Vivo']"));
+		mi.click();
+		Thread.sleep(3000);
+
+		WebElement search = driver.findElement(By.name("q"));
+		search.sendKeys("iphones", Keys.ENTER);
+		Thread.sleep(3000);
+		
+		driver.navigate().back();
+		Thread.sleep(2000);
+		
+        WebElement btn1 = driver.findElement(By.xpath("//input[@class='_3704LK']"));
+		btn1.sendKeys("Gold Jewel",Keys.ENTER);
+		Thread.sleep(1000);
+		
+		WebElement btn2 = driver.findElement(By.xpath("//div[@class='_312yBx SFzpgZ\']"));
+		btn2.click();
+		Thread.sleep(1000);
+		
+		WebElement btn3 = driver.findElement(By.xpath("//span[@style='margin-left: 5px;']"));
+		btn3.click();
+	}
+}
